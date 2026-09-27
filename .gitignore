@@ -1,0 +1,31 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+
+# Datasets: only the small Epilepsy set and the *_specs.pkl files are committed
+Datasets/*_dataLabels.pkl
+!Datasets/Epilepsy_dataLabels.pkl
+
+# Run outputs
+*.ckpt
+*.log
+jobs/
+results/
+board_results/
+see_rf/hrf/LogFolder/
+see_rf/hrf/RecordsFolder/
+see_rf/hardware/*_trained_model.pkl
+see_rf/hardware/*.npy
+*_accuracy_results*.csv
+*_shared_Power.csv
+*_output_config_analysis_*.csv
+train_accuracy_dataset_*.csv
+test_accuracy_dataset_*.csv
+RF_results_*.csv
+energy_summary.csv
+*_outputs/
+*.joblib
+*_RF_sensorAware_classification.csv
+ckpts/

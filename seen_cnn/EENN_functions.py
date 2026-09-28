@@ -1,5 +1,5 @@
 """
-author: Dina Huessein and Lubah Nelson 
+author: Dina Hussein and Lubah Nelson 
 sources: https://github.com/biggsbenjamin/earlyexitnet/blob/main/src/earlyexitnet/models/Branchynet.py
 and 
     

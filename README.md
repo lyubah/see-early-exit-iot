@@ -1,5 +1,9 @@
 # Sensor-Aware Early Exit (SEE) for Time-Series Classification on IoT Devices
 
+Code for **SEE-RF** ([ESWEEK 2026 paper](paper/SEE-RF_ESWEEK2026.pdf)) and **SEEN**
+([arXiv:2407.08715](https://arxiv.org/abs/2407.08715)): early-exit random forests and CNNs
+that stop sensing as soon as they are confident, to save energy on IoT devices.
+
 On battery-powered wearables, **sensing** often costs more energy than computing. A
 normal classifier waits for a full window of sensor data before it predicts. The
 models in this repo predict from a **prefix of the window** instead. Each early exit
@@ -141,15 +145,18 @@ See [baselines/README.md](baselines/README.md) for every method and the cluster 
   - 60/40 train/test for the CNN pipeline, `RF_sensorAware.py`, and the multi-seed baselines.
   - 60/20/20 train/validation/test for the SEE-vRF sweep, SEE-hRF, the Pi RF scripts, and
     the GB baseline.
-- This is research code from a multi-author lab project. See the papers for the full
-  author list.
+- Research code from Washington State University; the authors are listed with each
+  paper below.
 
 ## Papers
 
-- *Energy-Efficient Time Series Applications on IoT Devices via Sensor-Aware Early-Exit
-  Random Forest Architectures* (SEE-RF)
-- *Energy-Efficient Time Series Applications on IoT Devices with Sensor-Aware Early-Exit
-  Classifiers* (SEEN, CNN)
+- **SEE-RF**: S. Belhaj\*, N. Haghpanahi\*, L. Nelson\*, D. Hussein, G. Bhat,
+  *Energy-Efficient Time Series Applications on IoT Devices via Sensor-Aware Early Exit
+  Random Forest Architectures*, ESWEEK 2026. \*Equal contribution.
+  [PDF](paper/SEE-RF_ESWEEK2026.pdf)
+- **SEEN**: D. Hussein, L. Nelson, G. Bhat, *Sensor-Aware Classifiers for
+  Energy-Efficient Time Series Applications on IoT Devices*,
+  [arXiv:2407.08715](https://arxiv.org/abs/2407.08715), 2024.
 
 ## License
 

@@ -29,3 +29,7 @@ energy_summary.csv
 *.joblib
 *_RF_sensorAware_classification.csv
 ckpts/
+results_cnn/
+logs/
+saved_pkl/
+model_size_table.csv

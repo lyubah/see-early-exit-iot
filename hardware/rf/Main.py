@@ -30,7 +30,7 @@ if __name__ == "__main__":
     args = parse_args()
     #results = read_configuration_return_results(args.dataset_name, args.num_exits, args.proportions, args.th_combination)
     results = read_configuration_return_results(args.dataset_name, args.num_exits, args.proportions, args.th_combination)
-    os.system("pkill -f 'python3 data_logger.py'")
+    os.system("pkill -f data_logger.py")
     output_file = f'{args.dataset_name}_accuracy_results.csv'
     header = ['t_start','t1', 't2', 't3', 't4', 'total', 'true_label', 'prediction', 'correctness', 'exit_taken', 'data%']
     with open(output_file, "w", newline="") as f1:

@@ -43,7 +43,8 @@ class DecisionTree:
             # if we are no longer in the first percentage level so we add features starting from the last previous feature index (example: in level one we used 20% of features,
             # in level two we are targetting a data with 80% of the total features, so in this level we add only 60% of features since the other 20% have been already used earlier)
             if i>0:
-              list_feat = np.arange(max(1, int(n_feats * prop[i-1])),max(1, int(n_feats * prop[i]))+1) # the list of features to sample from
+              # capped at n_feats: with prop[i] == 1 the "+1" would point one past the last feature
+              list_feat = np.arange(max(1, int(n_feats * prop[i-1])), min(n_feats, max(1, int(n_feats * prop[i]))+1)) # the list of features to sample from
               feat_idxs = np.random.choice( list_feat , max(1, int(n_feats * (prop[i]-prop[i-1]) * 0.8)), replace=False) # prop is the list of feature proportions
 
             else: # we are in the first level

@@ -23,22 +23,8 @@ import os, sys, csv, time, argparse, pickle
 import numpy as np
 
 _CNN_DIR = os.path.dirname(os.path.abspath(__file__))
-
-
-def _find_repo_root(start):
-    d = start
-    for _ in range(8):
-        if (os.path.exists(os.path.join(d, "NN_functions.py")) and
-                os.path.exists(os.path.join(d, "Sensor_aware_early_exit.py"))):
-            return d
-        nd = os.path.dirname(d)
-        if nd == d:
-            break
-        d = nd
-    return start
-
-
-_REPO_ROOT = _find_repo_root(_CNN_DIR)
+# the timed model classes build on the network definitions in seen_cnn/
+_REPO_ROOT = os.path.abspath(os.path.join(_CNN_DIR, "..", "..", "seen_cnn"))
 for _p in (_CNN_DIR, _REPO_ROOT):
     if _p not in sys.path:
         sys.path.insert(0, _p)
@@ -246,7 +232,7 @@ def main():
     ap.add_argument("--input_seq_len", type=int, default=24)
     ap.add_argument("--max_windows", type=int, default=0)
     ap.add_argument("--with_power", action="store_true")
-    ap.add_argument("--power_logger", default=os.path.join(_CNN_DIR, "data_logger.py"))
+    ap.add_argument("--power_logger", default=os.path.join(_CNN_DIR, "..", "data_logger.py"))
     ap.add_argument("--outdir", default=".")
     args = ap.parse_args()
 

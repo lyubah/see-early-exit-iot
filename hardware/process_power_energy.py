@@ -1,7 +1,7 @@
 """
 process_power_energy.py -- turn a folder of board runs into per-run latency / accuracy / energy.
 
-Pairs every run's latency CSV (written by Main_board_cnn.py: t_start, t1..t4, total,
+Pairs every run's latency CSV (written by cnn/Main_board_cnn.py or rf/Main.py: t_start, t1..t4, total,
 true_label, prediction, correctness, exit_taken, data%) with its power trace
 (<Dataset>_<Backbone>_<Variant>_power.csv, or <Dataset>_shared_Power.csv as written by
 data_logger.py: wall-clock time, power mW)
@@ -30,7 +30,7 @@ def read_latency_csv(path):
                     "t_start": float(r["t_start"]),
                     "total": float(r["total"]),
                     "correct": str(r["correctness"]).strip().lower() == "true",
-                    "exit_taken": int(float(r["exit_taken"])),
+                    "exit_taken": int(float(r.get("exit_taken", 1) or 1)),   # full-window runs have no exits
                     "data_pct": float(r.get("data%", 100) or 100),
                 })
             except (KeyError, ValueError):
@@ -83,6 +83,8 @@ def main():
         parts = stem.split("_")
         if len(parts) >= 5 and parts[1] == "accuracy" and parts[2] == "results":
             ds, backbone, variant = parts[0], parts[3], parts[4]   # <ds>_accuracy_results_<bb>_<var>.csv (Main_board_cnn.py)
+        elif len(parts) == 3 and parts[1] == "accuracy" and parts[2] == "results":
+            ds, backbone, variant = parts[0], "RF", "board"        # <ds>_accuracy_results.csv (rf/Main.py, full-window baseline)
         elif len(parts) >= 3:
             ds, backbone, variant = parts[0], parts[1], parts[2]   # legacy <ds>_<bb>_<var>.csv
         else:

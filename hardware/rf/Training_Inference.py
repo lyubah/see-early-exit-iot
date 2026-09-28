@@ -4,7 +4,7 @@ import time
 import pickle
 import os
 import sys
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "vrf", "rf_with_exits"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "see_rf", "vrf", "rf_with_exits"))
 from RandomForest import RandomForest  # needed so the pickled forest can be loaded
 import concurrent.futures
 

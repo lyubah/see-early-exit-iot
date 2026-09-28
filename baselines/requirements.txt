@@ -1,0 +1,7 @@
+# Extra dependencies for the comparison baselines (install on top of ../requirements.txt).
+# Tested with tslearn 0.6.4 / 0.8.1, sktime 0.38 / 0.40, eden 1.0, bigtree 1.4.
+tslearn>=0.6.4                                   # Non-Myopic early classifier
+sktime>=0.30                                     # TEASER-CNN
+bigtree>=1.4                                     # EDEN tree structures
+eden @ git+https://github.com/eml-eda/eden       # Adaptive RF (EDEN)
+setuptools<81                                    # EDEN imports pkg_resources (removed in setuptools 81)
